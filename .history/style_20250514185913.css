@@ -1,0 +1,16 @@
+body{
+    background-image: url(fondo-monocromatico-blanco-estilo-papel_52683-66443.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+
+.sombra{
+    box-shadow: 0 15px 40px black;
+}
+
+.☰{
+    cursor: pointer;
+}

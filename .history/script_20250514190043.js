@@ -1,0 +1,1 @@
+hamburgueza = document.querySelector(".☰")

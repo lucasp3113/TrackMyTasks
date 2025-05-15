@@ -1,0 +1,54 @@
+body{
+    background-image: url(1d65cc9ce3375d8fe3a993b90a7d41b6.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+
+.sombra{
+    box-shadow: 0 17px 37px black;
+}
+
+.hamburgueza{
+    cursor: pointer;
+}
+
+.fondo-transparente{
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 20px 17px 37px black;
+    border: 2px solid white;
+    padding: 30px;
+    height: 300;
+}
+
+.fondo-transparente h1{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.animacion {
+  border-bottom: 2px solid transparent;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.animacion::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: white; 
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.7s ease;
+}
+
+.animacion:hover::after {
+  width: 100%; 
+}
+
+.animacion:hover {
+  transform: scale(1.09); 
+}

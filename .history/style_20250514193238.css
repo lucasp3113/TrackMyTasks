@@ -1,0 +1,24 @@
+body{
+    background-image: url(1d65cc9ce3375d8fe3a993b90a7d41b6.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+
+.sombra{
+    box-shadow: 0 17px 37px black;
+}
+
+.hamburgueza{
+    cursor: pointer;
+}
+
+.fondo-transparente{
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 20px 17px 37px black;
+    border: 2px solid white;
+    padding: 30px;
+    height: 250;
+}
