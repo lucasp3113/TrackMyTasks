@@ -1,3 +1,9 @@
+/* Mantiene los estilos existentes */
+*{
+  margin: 0%;
+  padding: 0%;
+}
+
 body{
     background-image: url(img/1d65cc9ce3375d8fe3a993b90a7d41b6.jpg);
     background-size: cover;
@@ -5,7 +11,6 @@ body{
     background-repeat: no-repeat;
     height: 100vh;
 }
-
 
 .sombra{
     box-shadow: 0 17px 37px black;
@@ -15,7 +20,7 @@ body{
     cursor: pointer;
 }
 
-.background-trasparent{
+.background-transparent{
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 20px 17px 37px black;
     border: 2px solid white;
@@ -23,7 +28,7 @@ body{
     height: 300;
 }
 
-.fondo-transparente h1{
+.background-transparent h1{
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -31,6 +36,8 @@ body{
   border-bottom: 2px solid transparent;
   transition: transform 0.3s ease;
   position: relative;
+  margin: 0;
+  margin-left: 10px;
 }
 
 .animacion::after {
@@ -62,11 +69,10 @@ body{
     border: 2px solid white;
 }
 
-.w-35{
-  width: 30%;
-}
-
 .menuSection{
   border-radius: 20px;
-  flex-shrink: 0
 }
+
+
+
+
