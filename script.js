@@ -36,6 +36,11 @@ desplegar.addEventListener("click", () => {
     }
 });
 
+//Eventos de cada ícono
+addDiv.addEventListener("click", () => {
+    main.appendChild(formSection)
+})
+
 // Elementos del formulario para añadir tareas
 let formSection = document.createElement("section");
 formSection.className = "d-flex justify-content-center align-items-center w-100";
