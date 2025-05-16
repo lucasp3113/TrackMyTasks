@@ -7,20 +7,30 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="script.js" defer></script>
+
 </head>
 <body>
-    <h1 class="hamburgueza position-absolute m-3 cursor-pointer text-white">☰</h1>
     <header class="d-flex justify-content-center align-items-center sombra">
         <img src="img/logo.png" width="10%" alt="" />
         <h1 class="text-white">TrackMyTasks</h1>
     </header>
-    <main class="d-flex h-100">
-        <!-- <section class="fondo-transparente d-flex flex-column h-100">
-            <h1 class="text-white fs-3">Ver tareas</h1>
-            <h1 class="text-white fs-3">Buscar tareas</h1>
-            <h1 class="text-white fs-3">Borrar tareas</h1>
-        </section> -->
+    <main class="d-flex h-100 w-100">
+        <aside class="m-3 menuSection background-trasparent d-flex flex-column justify-content-between align-items-center h-75 w-30">
+            <div class="desplegar  w-100 f-flex d-flex align-items-center justify-content-start">
+                <i class="bi bi-arrow-bar-right text-white fs-3"></i>
+            </div>
+            <div class="show d-flex align-items-center justify-content-center">
+                <i class="bi bi-eye text-white fs-3 me-3"></i>
+            </div>
+            <div class="search d-flex align-items-center justify-content-center">
+                <i class="bi bi-search text-white fs-3 me-3"></i>
+            </div>
+            <div class="add d-flex align-items-center justify-content-center">
+                <i class="bi bi-file-plus text-white fs-3 me-3"></i>
+            </div>
+        </aside>
     </main>
 </body>
 </html>

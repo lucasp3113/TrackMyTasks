@@ -1,43 +1,49 @@
 let main = document.querySelector("main")
+let menuSection = document.querySelector(".menuSection")
 let show = false
 
-let hamburgueza = document.querySelector(".hamburgueza")
-hamburgueza.addEventListener("click", () => {
+let desplegar = document.querySelector(".desplegar")
+desplegar.addEventListener("click", () => {
     if (!show){
-        main.appendChild(menuSection)
+        showDiv.appendChild(showAll)
+        searchDiv.appendChild(search)
+        addDiv.appendChild(add)
         show = true
+        desplegar.innerHTML = "<i class='bi bi-arrow-bar-left text-white fs-3 ms-5'></i>"
     }else{
-        sectionMenu.remove()
+        showAll.remove()
+        search.remove()
+        add.remove()
+        desplegar.innerHTML = "<i class='bi bi-arrow-bar-right text-white fs-3 desplegar'></i>"
         show = false
     }
 })
 
 
 //elementos del menú
-let menuSection = document.createElement("section")
-menuSection.className = "fondo-transparente d-flex flex-column h-100"
+let showDiv = menuSection.querySelector(".show")
+let searchDiv = menuSection.querySelector(".search")
+let addDiv = menuSection.querySelector(".add")
 let showAll = document.createElement("h1")
-showAll.className = "text-white fs-3 animacion"
+showAll.className = "text-white fs-5 animacion m-0"
 showAll.textContent = "Todas tus tareas"
 let search = document.createElement("h1")
-search.className = "text-white fs-3 animacion"
+search.className = "text-white fs-5 animacion m-0"
 search.textContent = "Buscar una tarea"
 let add = document.createElement("h1")
-add.className = "text-white fs-3 animacion"
+add.className = "text-white fs-5 animacion m-0"
 add.textContent = "Añadir una tarea"
-add.addEventListener("click", () => {
-    main.appendChild(formSection)
-})
-menuSection.appendChild(showAll)
-menuSection.appendChild(search)
-menuSection.appendChild(add)
+// add.addEventListener("click", () => {
+//     main.appendChild(formSection)
+// })
+
 
 //elementos del formulario para añadir tareas
 let formSection = document.createElement("section")
 formSection.className = "d-flex justify-content-center align-items-center w-100"
 let formTask = document.createElement("form")
 formTask.method = "post"
-formTask.className = "formTask"
+formTask.className = "formTask d-flex justify-content-start align-items-center flex-column mx-auto"
 let nombre = document.createElement("input")
 nombre.placeholder = "Nombre de la tarea"
 nombre.type = "text"
