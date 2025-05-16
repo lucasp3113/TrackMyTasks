@@ -44,22 +44,50 @@ addDiv.addEventListener("click", () => {
 // Elementos del formulario para añadir tareas
 let formSection = document.createElement("section");
 formSection.className = "d-flex justify-content-center align-items-center w-100";
+
 let formTask = document.createElement("form");
-formTask.method = "post";
 formTask.className = "formTask d-flex justify-content-start align-items-center flex-column mx-auto";
-let nombre = document.createElement("input");
-nombre.placeholder = "Nombre de la tarea";
-nombre.type = "text";
-nombre.className = "m-3 form-control";
-let fecha = document.createElement("input");
-fecha.placeholder = "Fecha";
-fecha.type = "date";
-fecha.className = "m-3 form-control";
+
+
+let inputName = document.createElement("input");
+inputName.placeholder = "Nombre de la tarea";
+inputName.type = "text";
+inputName.className = "m-3 form-control";
+
+let inputDate = document.createElement("input");
+inputDate.placeholder = "Fecha";
+inputDate.type = "date";
+inputDate.className = "m-3 form-control";
+
+let inputDescription = document.createElement("textarea")
+inputDescription.placeholder = "Descripción"
+inputDescription.className = "m-3 form-control"
+
+formTask.addEventListener("submit", (e) => {
+    e.preventDefault()
+    data = {
+        'name': inputName.value,
+        'date': inputDate.value,
+        'desctiption': inputDescription.value
+    }
+    localStorage.setItem(inputName.value ,JSON.stringify(data))
+})
+
 let submit = document.createElement("button");
 submit.type = "submit";
 submit.className = "btn btn-primary";
 submit.textContent = "Añadir";
-formTask.appendChild(nombre);
-formTask.appendChild(fecha);
+
+formTask.appendChild(inputName);
+formTask.appendChild(inputDate);
+formTask.appendChild(inputDescription)
 formTask.appendChild(submit);
 formSection.appendChild(formTask);
+
+//Elementos para ver todas las tareas
+let divTareas = document.createElement("div")
+// let tareas = JSON.parse(localStorage.key)
+let tareas = []
+for (let i = 1; i <= localStorage.length; i++){
+    tareas.push(JSON.parse(localStorage.getItem(localStorage.key(i-1))))
+}
