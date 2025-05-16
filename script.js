@@ -41,6 +41,13 @@ addDiv.addEventListener("click", () => {
     main.appendChild(formSection)
 })
 
+showDiv.addEventListener("click", () => {
+    l = document.createElement("h1")
+    l.className = "text-white"
+    l.textContent = tareas
+    main.appendChild(l)
+})
+
 // Elementos del formulario para añadir tareas
 let formSection = document.createElement("section");
 formSection.className = "d-flex justify-content-center align-items-center w-100";
