@@ -42,10 +42,7 @@ addDiv.addEventListener("click", () => {
 })
 
 showDiv.addEventListener("click", () => {
-    l = document.createElement("h1")
-    l.className = "text-white"
-    l.textContent = tareas
-    main.appendChild(l)
+    main.appendChild(divTareas)
 })
 
 // Elementos del formulario para añadir tareas
@@ -84,7 +81,6 @@ let submit = document.createElement("button");
 submit.type = "submit";
 submit.className = "btn btn-primary";
 submit.textContent = "Añadir";
-
 formTask.appendChild(inputName);
 formTask.appendChild(inputDate);
 formTask.appendChild(inputDescription)
@@ -93,8 +89,21 @@ formSection.appendChild(formTask);
 
 //Elementos para ver todas las tareas
 let divTareas = document.createElement("div")
-// let tareas = JSON.parse(localStorage.key)
-let tareas = []
 for (let i = 1; i <= localStorage.length; i++){
-    tareas.push(JSON.parse(localStorage.getItem(localStorage.key(i-1))))
+    let task = document.createElement("div")
+    task.className = "d-flex"
+    let pName = document.createElement("p")
+    pName.className = "fs-3 text-white me-3"
+    let pDate = document.createElement("p")
+    pDate.className = "fs-3 text-white me-3"
+    let pDescription = document.createElement("p")
+    pDescription.className = "fs-3 text-white me-3"
+    let objectTask = (JSON.parse(localStorage.getItem(localStorage.key(i-1))))
+    pName.textContent = objectTask.name
+    pDate.textContent = objectTask.date
+    pDescription.textContent = objectTask.desctiption
+    task.appendChild(pName)
+    task.appendChild(pDate)
+    task.appendChild(pDescription)
+    divTareas.appendChild(task)
 }
