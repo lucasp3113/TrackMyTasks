@@ -26,6 +26,7 @@ body{
     border: 2px solid white;
     padding: 30px;
     height: 300;
+    border-radius: 20px;
 }
 
 .background-transparent h1{
@@ -69,7 +70,15 @@ body{
     border: 2px solid white;
 }
 
-.menuSection{
-  border-radius: 20px;
+.magenta{
+  color:magenta;
 }
 
+.animacionDos{
+  transition: transform 0.3s ease-in-out;
+
+}
+
+.animacionDos:hover{
+    transform: scale(130%);
+}

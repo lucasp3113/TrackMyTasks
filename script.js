@@ -42,7 +42,12 @@ addDiv.addEventListener("click", () => {
 })
 
 showDiv.addEventListener("click", () => {
-    main.appendChild(divTareas)
+    if (divTareas.innerHTML == "") {
+        divTareas.appendChild(msgNull)
+        main.appendChild(divTareas)
+    } else {
+        main.appendChild(divTareas)
+    }
 })
 
 // Elementos del formulario para añadir tareas
@@ -89,6 +94,10 @@ formSection.appendChild(formTask);
 
 //Elementos para ver todas las tareas
 let divTareas = document.createElement("div")
+let msgNull = document.createElement("p")
+msgNull.className = "fs-3 text-white"
+msgNull.textContent = "No hay tareas pendientes"
+divTareas.className = "m-auto background-transparent"
 for (let i = 1; i <= localStorage.length; i++){
     let task = document.createElement("div")
     task.className = "d-flex"
@@ -105,5 +114,15 @@ for (let i = 1; i <= localStorage.length; i++){
     task.appendChild(pName)
     task.appendChild(pDate)
     task.appendChild(pDescription)
-    divTareas.appendChild(task)
+    let subDiv = document.createElement("div")
+    subDiv.className = "d-flex w-100 justify-content-between"
+    let iconTrash = document.createElement("i")
+    iconTrash.className = "bi bi-trash fs-3 text-danger animacionDos"
+    iconTrash.addEventListener("click", () => {
+        localStorage.removeItem(objectTask.name)
+        subDiv.remove()
+    })
+    subDiv.appendChild(task)
+    subDiv.appendChild(iconTrash)
+    divTareas.appendChild(subDiv)
 }
