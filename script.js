@@ -35,27 +35,22 @@ desplegar.addEventListener("click", () => {
         show = false;
     }
 });
-function ocultarTodo() {
-    if (main.contains(formSection)) main.removeChild(formSection);
-    if (main.contains(divTareas)) main.removeChild(divTareas);
-}
 
+//Eventos de cada ícono
 addDiv.addEventListener("click", () => {
-    ocultarTodo(); // Oculta lista de tareas
-    main.appendChild(formSection); // Muestra el formulario
-});
+    main.appendChild(formSection)
+    divTareas.remove()
+})
 
 showDiv.addEventListener("click", () => {
-    ocultarTodo(); // Oculta formulario
-    actualizarListaTareas(); // Actualiza lista por si hay nuevas tareas
-
-    // Mostrar mensaje si no hay tareas
-    if (divTareas.innerHTML === "") {
-        divTareas.appendChild(msgNull);
+    formSection.remove()
+    if (divTareas.innerHTML == "") {
+        divTareas.appendChild(msgNull)
+        main.appendChild(divTareas)
+    } else {
+        main.appendChild(divTareas)
     }
-
-    main.appendChild(divTareas); // Muestra lista
-});
+})
 
 // Elementos del formulario para añadir tareas
 let formSection = document.createElement("section");
@@ -79,8 +74,6 @@ let inputDescription = document.createElement("textarea")
 inputDescription.placeholder = "Descripción"
 inputDescription.className = "m-3 form-control"
 
-
-
 formTask.addEventListener("submit", (e) => {
     e.preventDefault()
     data = {
@@ -88,69 +81,8 @@ formTask.addEventListener("submit", (e) => {
         'date': inputDate.value,
         'desctiption': inputDescription.value
     }
-    localStorage.setItem(inputName.value ,JSON.stringify(data));
-
-    inputName.value = "";
-    inputDescription.value = "";
-    inputDate.value = "";
-
-    actualizarListaTareas();
-    main.appendChild(divTareas);
-
-    if (main.contains(formSection)) {
-    main.removeChild(formSection);
-}
-
+    localStorage.setItem(inputName.value ,JSON.stringify(data))
 })
-
-function actualizarListaTareas() {
-    divTareas.innerHTML = ""; // Limpiar la lista
-
-    if (localStorage.length === 0) {
-        divTareas.appendChild(msgNull);
-        return;
-    }
-
-    for (let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i);
-        let objectTask = JSON.parse(localStorage.getItem(key));
-
-        let task = document.createElement("div");
-        task.className = "d-flex";
-
-        let pName = document.createElement("p");
-        pName.className = "fs-3 text-white me-3";
-        pName.textContent = objectTask.name;
-
-        let pDate = document.createElement("p");
-        pDate.className = "fs-3 text-white me-3";
-        pDate.textContent = objectTask.date;
-
-        let pDescription = document.createElement("p");
-        pDescription.className = "fs-3 text-white me-3";
-        pDescription.textContent = objectTask.desctiption;
-
-        task.appendChild(pName);
-        task.appendChild(pDate);
-        task.appendChild(pDescription);
-
-        let subDiv = document.createElement("div");
-        subDiv.className = "d-flex w-100 justify-content-between";
-
-        let iconTrash = document.createElement("i");
-        iconTrash.className = "bi bi-trash fs-3 text-danger animacionDos";
-
-        iconTrash.addEventListener("click", () => {
-            localStorage.removeItem(objectTask.name);
-            actualizarListaTareas(); // Vuelve a renderizar tras eliminar
-        });
-
-        subDiv.appendChild(task);
-        subDiv.appendChild(iconTrash);
-        divTareas.appendChild(subDiv);
-    }
-}
-
 
 let submit = document.createElement("button");
 submit.type = "submit";
@@ -161,7 +93,6 @@ formTask.appendChild(inputDate);
 formTask.appendChild(inputDescription)
 formTask.appendChild(submit);
 formSection.appendChild(formTask);
-
 
 //Elementos para ver todas las tareas
 let divTareas = document.createElement("div")
