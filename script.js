@@ -40,9 +40,10 @@ desplegar.addEventListener("click", () => {
 addDiv.addEventListener("click", () => {
     main.appendChild(formSection)
     divTareas.remove()
+    
 })
 
-showDiv.addEventListener("click", () => {
+function showFunction() {
     formSection.remove()
     if (divTareas.innerHTML == "") {
         divTareas.appendChild(msgNull)
@@ -50,7 +51,9 @@ showDiv.addEventListener("click", () => {
     } else {
         main.appendChild(divTareas)
     }
-})
+}
+
+showDiv.addEventListener("click", showFunction)
 
 // Elementos del formulario para añadir tareas
 let formSection = document.createElement("section");
@@ -82,6 +85,7 @@ formTask.addEventListener("submit", (e) => {
         'desctiption': inputDescription.value
     }
     localStorage.setItem(inputName.value ,JSON.stringify(data))
+    showFunction()
 })
 
 let submit = document.createElement("button");
@@ -118,13 +122,31 @@ for (let i = 1; i <= localStorage.length; i++){
     task.appendChild(pDescription)
     let subDiv = document.createElement("div")
     subDiv.className = "d-flex w-100 justify-content-between"
+    let iconPencil = document.createElement("i")
+    iconPencil.className = "bi bi-pencil fs-3 animacionDos text-primary"
     let iconTrash = document.createElement("i")
+    iconPencil.addEventListener("click", () => {
+        divTareas.remove()
+        task.remove()
+        main.appendChild(formSection)
+        inputName.value = objectTask.name
+        inputDate.value = objectTask.date
+        inputDescription.value = objectTask.desctiption
+        let objectModified = {...objectTask} 
+        objectModified.name = "feefe"
+        localStorage.setItem(objectModified.name, JSON.stringify(objectModified))
+        localStorage.removeItem(objectTask.name)
+        subDiv.remove()
+
+
+    })
     iconTrash.className = "bi bi-trash fs-3 text-danger animacionDos"
     iconTrash.addEventListener("click", () => {
         localStorage.removeItem(objectTask.name)
         subDiv.remove()
     })
     subDiv.appendChild(task)
+    subDiv.appendChild(iconPencil)
     subDiv.appendChild(iconTrash)
     divTareas.appendChild(subDiv)
 }
